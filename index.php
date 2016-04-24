@@ -1,9 +1,11 @@
 <?php
 
-use Reader\ReaderFactory;
+use Payment\PaymentManager;
 
 require_once 'config.php';
 
-$file = new SplFileObject(PROJECT_DIR . '/test_data.csv');
-$reader = (new ReaderFactory())->createReader($file);
-print_r($reader->fetch());
+$paymentManager = new PaymentManager();
+$eventSaver = new EventSaver($paymentManager);
+$loader = new Loader($eventSaver);
+
+$loader->loadFiles();

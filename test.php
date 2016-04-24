@@ -7,7 +7,8 @@ require_once 'config.php';
 /** @var ITest[] $tests */
 $tests = [
     new Test\ReaderTest(),
-    new Test\ConverterTest()
+    new Test\ConverterTest(),
+    new Test\PeriodTest()
 ];
 
 $error = false;
