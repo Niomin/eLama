@@ -25,7 +25,7 @@ class ConverterFactory
             case 'USD': return $this->getConverterUsd();
             case 'RUB': return $this->getConverterRub();
             case 'EUR': return $this->getConverterEur();
-            default: throw new RuntimeException('Неизвестная валюта');
+            default: throw new RuntimeException('Неизвестная валюта ' . $cur);
         }
     }
 

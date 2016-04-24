@@ -20,13 +20,18 @@ class ReaderCsv implements IReader
 
     public function fetch()
     {
+        if (!isset($this->file)) {
+            return false;
+        }
+
         if (!$this->headers) {
             $this->open();
         }
 
         $data = $this->file->fgetcsv();
 
-        if (!$data) {
+        if (!$data || count($data) != count($this->headers)) {
+            $this->file = null;
             return false;
         }
 

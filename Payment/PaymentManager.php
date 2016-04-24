@@ -25,6 +25,9 @@ class PaymentManager
     /** @return Payment[] */
     public function getAll()
     {
+        usort($this->payments, function(Payment $p1, Payment $p2) {
+            return $p1->getDate() > $p2->getDate() ? 1 : -1;
+        });
         return array_values($this->payments);
     }
 }

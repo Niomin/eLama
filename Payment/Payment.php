@@ -52,4 +52,13 @@ class Payment
     {
         $this->amount += $amount;
     }
+
+    public function toArray()
+    {
+        return [
+            'partnerId' => $this->partnerId,
+            'date'      => $this->date->format('Y-m-d'),
+            'amount'    => $this->amount,
+        ];
+    }
 }
