@@ -4,13 +4,16 @@ use Test\ITest;
 
 require_once 'config.php';
 
-$tests = ['Test\\ReaderTest'];
+/** @var ITest[] $tests */
+$tests = [
+    new Test\ReaderTest(),
+    new Test\ConverterTest()
+];
+
 $error = false;
 
 foreach ($tests as $test) {
     try {
-        /** @var ITest $test */
-        $test = new $test;
         $test->runTests();
     } catch (\Exception $e) {
         echo $e->getMessage(), PHP_EOL;
